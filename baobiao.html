@@ -1,0 +1,353 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>财务报表</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <style type="text/css">
+    body {
+      background-color: #f1f2f7;
+    }
+
+    #select {
+      width: 100%;
+    }
+
+    #select li {
+      width: 25%;
+      margin-right: 5%
+    }
+
+    #l {
+      padding: 100px;
+    }
+
+    .weixin,
+    .alipay,
+    .yhq,
+    .tk,
+    .ys {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      background: url(img/weixin.png) no-repeat center center;
+      background-size: 50%;
+    }
+
+    .alipay {
+      background-image: url(./img/alipay.png);
+    }
+
+    .yhq {
+      background-image: url(./img/yhq.png);
+    }
+
+    .tk {
+      background-image: url(./img/tuikuan.png);
+    }
+    .qian{
+      font-size:24px !important;
+      font-weight: bold
+    }
+    .shujuone dt{
+      line-height: 50px;
+    }
+    .shujuone dl {
+      padding: 6px 0 0 35px;
+    }
+    .shujutow dl {
+      padding:10px 0 0 35px;
+    }
+    .am-g{
+      width:100%;
+      margin-bottom: 20px;
+    }
+    .am-g input{
+      width: 50%;
+      height: 30px;
+      line-height: 30px;
+      display: inline-block
+    }
+    .more{float:right}
+  </style>
+</head>
+
+<body>
+  <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+  </head>
+
+  <body>
+    <div class="admin-index">
+      <dl data-am-scrollspy="{animation: 'slide-right', delay: 100}">
+        <dt class="qs">
+          <i class="weixin"></i>
+        </dt>
+        <dd>￥455</dd>
+        <dd class="f12">本月微信收入</dd>
+      </dl>
+      <dl data-am-scrollspy="{animation: 'slide-right', delay: 300}">
+        <dt class="cs">
+          <i class="alipay"></i>
+        </dt>
+        <dd>￥455</dd>
+        <dd class="f12">本月支付宝收入</dd>
+      </dl>
+      <dl data-am-scrollspy="{animation: 'slide-right', delay: 600}">
+        <dt class="hs">
+          <i class="yhq"></i>
+        </dt>
+        <dd>4个</dd>
+        <dd class="f12">本月优惠券数量</dd>
+      </dl>
+      <dl data-am-scrollspy="{animation: 'slide-right', delay: 900}">
+        <dt class="ls">
+          <i class="tk"></i>
+        </dt>
+        <dd>￥4</dd>
+        <dd class="f12">本月退款金额</dd>
+      </dl>
+    </div>
+    <div class="admin-biaoge">
+      <div class="xinxitj">财务总览</div>
+      <div class="am-g">
+        <div class="am-u-sm-4">
+          起始日期：
+            <input type="text" class="am-form-field" id="my-start"/>
+          </div>
+          <div class="am-u-sm-4">
+            结束日期：
+            <input type="text" class="am-form-field" id="my-end" />
+          </div>
+          <div class="am-u-sm-4">
+            <button class="am-btn am-btn-success am-text-info am-btn-xs">搜索</button>  
+          </div>
+        </div>
+        <div class="am-alert am-alert-danger" id="my-alert" style="display: none">
+            <p>开始日期应小于结束日期！</p>
+        </div>
+      <table class="am-table">
+        <thead>
+          <tr>
+            <th>微信收入</th>
+            <th>支付宝收入</th>
+            <th>优惠券个数</th>
+            <th>退款金额</th>
+            <th>总收入</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>￥455</td>
+            <td>￥455</td>
+            <td>4个</td>
+            <td>￥455</td>
+            <td>￥455</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="xinxitj">
+        已使用的优惠券
+        <a class="more" href="#">查看更多</a>
+      </div>
+      <table class="am-table">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>使用时间</th>
+            <th>优惠金额</th>
+            <th>优惠券描述</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2018-3-10 10:10:10</td>
+            <td>￥20</td>
+            <td>这是测试数据</a>
+            </td>
+            <td>
+              <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search(this)">查看关联订单</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>2018-3-10 10:10:20</td>
+            <td>￥20</td>
+            <td>这是测试数据</a>
+            </td>
+            <td>
+              <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search(this)">查看关联订单</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>2018-3-10 10:10:30</td>
+            <td>￥20</td>
+            <td>这是测试数据</a>
+            </td>
+            <td>
+              <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search(this)">查看关联订单</button>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>2018-3-10 10:10:40</td>
+            <td>￥20</td>
+            <td>这是测试数据</a>
+            </td>
+            <td>
+              <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search(this)">查看关联订单</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="xinxitj">退款订单 <a class="more" href="#">查看更多</a></div>
+      <table class="am-table">
+        <thead>
+          <tr>
+            <th>运单号</th>
+            <th>价格</th>
+            <th>套餐名称</th>
+            <th>套餐口味</th>
+            <th>定制周期数</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>54321</td>
+            <td>￥864.0</td>
+            <td>牛餐</td>
+            <td>牛肉味</td>
+            <td>3周期</td>
+            <td>
+              <div class="am-btn-group">
+                <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search_order(this)">查看订单详情</button>
+                <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search_user(this)">查看客户信息</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>54321</td>
+            <td>￥864.0</td>
+            <td>牛餐</td>
+            <td>牛肉味</td>
+            <td>3周期</td>
+            <td>
+              <div class="am-btn-group">
+                <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search_order(this)">查看订单详情</button>
+                <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search_user(this)">查看客户信息</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>54321</td>
+            <td>￥864.0</td>
+            <td>牛餐</td>
+            <td>牛肉味</td>
+            <td>3周期</td>
+            <td>
+              <div class="am-btn-group">
+                <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search_order(this)">查看订单详情</button>
+                <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search_user(this)">查看客户信息</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>54321</td>
+            <td>￥864.0</td>
+            <td>牛餐</td>
+            <td>牛肉味</td>
+            <td>3周期</td>
+            <td>
+              <div class="am-btn-group">
+                <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search_order(this)">查看订单详情</button>
+                <button type="button" class="am-btn am-btn-success am-btn-xs am-text-info am-round" target="" class="del" onclick="search_user(this)">查看客户信息</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="shuju">
+        <div class="shujuone">
+          <dl>
+            <dt>累计微信收入: <span class="qian">￥1356666</span>   </dt>
+            <dt>累计支付宝收入: <span class="qian">￥5646465.98</span> </dt>
+            <dt>累计优惠券的使用个数： <span class="qian">230个</span>    </dt>
+            <dt>累计退款金额: <span class="qian">￥564.98</span></dt>
+          </dl>
+          <!-- <ul>
+            <h2>￥333333333</h2>
+            <li>累计实际营收</li>
+          </ul> -->
+        </div>
+        <div class="shujutow">
+          <ul>
+            <h2>￥333333333</h2>
+            <li>累计实际营收</li>
+          </ul>
+          <dl>
+              <dt>微信收入占比: <span class="qian">25%</span></dt>
+              <dt>支付宝收入占比: <span class="qian">75%</span> </dt>
+              <dt>优惠金额: <span class="qian">￥12345</span> </dt>
+          </dl>
+    </div>
+    <!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="assets/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+    <script>
+      $(function() {
+      var startDate = new Date(2014, 11, 20);
+      var endDate = new Date(2014, 11, 25);
+      var $alert = $('#my-alert');
+      $('#my-start').datepicker().
+        on('changeDate.datepicker.amui', function(event) {
+          if (event.date.valueOf() > endDate.valueOf()) {
+            $alert.find('p').text('开始日期应小于结束日期！').end().show();
+          } else {
+            $alert.hide();
+            startDate = new Date(event.date);
+            $('#my-start').value($('#my-start').data('date'));
+          }
+          $(this).datepicker('close');
+        });
+
+      $('#my-end').datepicker().
+        on('changeDate.datepicker.amui', function(event) {
+          if (event.date.valueOf() < startDate.valueOf()) {
+            $alert.find('p').text('结束日期应大于开始日期！').end().show();
+          } else {
+            $alert.hide();
+            endDate = new Date(event.date);
+            $('#my-end').value($('#my-end').data('date'));
+          }
+          $(this).datepicker('close');
+        });
+    });
+    </script>
+  </body>
+
+</html>

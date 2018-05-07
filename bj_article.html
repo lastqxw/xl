@@ -1,0 +1,269 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <style type="text/css">
+        body,
+        #main {
+            width: 98%;
+            margin: 0 auto;
+            margin-bottom: 50px;
+            background-color: #fff;
+        }
+
+        #form {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .name,
+        .price,
+        .flavor,
+        .batching,
+        .integral,
+        .exchange,
+        .change,
+        .photo {
+            width: 100%;
+            line-height: 50px;
+            padding: 15px;
+            box-sizing: initial;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .photo {
+            height: 240px;
+            line-height: 240px;
+
+        }
+
+        .name>span,
+        .price>span,
+        .photo>span,
+        .flavor>span,
+        .batching>span,
+        .integral>span,
+        .exchange>span,
+        .change>span {
+            display: inline-block;
+            width: 15%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .name>input,
+        .price>input,
+        .photo>input,
+        .flavor>input,
+        .batching>input,
+        .integral>input,
+        .exchange>input,
+        .change>input {
+            width: 10%;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #photo,
+        #photo1 {
+            display: inline-block;
+        }
+
+        #sub {
+            background-color: #fff;
+            border: 1px solid #333;
+            color: #333;
+            margin: 20px;
+            margin-left: 20px;
+        }
+
+        .add_flavor {
+            background-color: #4aaa4a;
+            display: inline-block;
+            border-radius: 10px;
+            width: 120px;
+        }
+
+        .add_flavor img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .add_flavor span:last-child {
+            display: inline-block;
+            line-height: 30px;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+    <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+</head>
+
+<body>
+    <div class="admin-biaogelist">
+        <div class="listbiaoti am-cf">
+            <ul class="am-icon-flag on">添加文章</ul>
+            <dl class="am-icon-home" style="float: right;">
+                当前位置： 首页 >
+                <a href="information.html" target="iframe">文章管理</a> >添加文章
+            </dl>
+        </div>
+        <div id="main">
+            <div class="name">
+                <label for="doc-select-1">选择文章类型</label>
+                <select data-am-selected id="type">
+                    <option value="0">图文类型</option>
+                    <option value="1">视频类型</option>
+                </select>
+            </div>
+            <form class="am-form" id="pic_article">
+                <fieldset>
+                    <!-- <legend>宠物信息</legend> -->
+                    <div class="am-form-group petType" style="margin-bottom:20px">
+                        <label for="doc-select-1" style="display: block;">选择宠物类型</label>
+                        <select data-am-selected="{searchBox: 1}" id="cw"></select>
+                    </div>
+                    <div class="am-form-group am-form-file" style="display: block;">
+                        <label for="doc-ipt-pwd-1">添加文章主图</label>
+                        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+                        <input id="doc-form-file" type="file" multiple>
+                    </div>
+                    <div id="file-list"></div>
+                    <div class="am-form-group">
+                        <label for="doc-ipt-email-1">文章标题</label>
+                        <input type="text" class="title" id="doc-ipt-email-1" placeholder="输入文章标题">
+                    </div>
+                    <!-- 文章内容 -->
+                    <div class="am-form-group">
+                        <label for="doc-ipt-email-1">文章内容</label>
+                        <!-- 加载编辑器的容器 -->
+                        <div id="editor">
+                                <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+                            </div>
+                    </div>
+                    <p>
+                        <button type="button" class="am-btn am-btn-default" id="sub">提交</button>
+                    </p>
+                </fieldset>
+            </form>
+            <form class="am-form" id="video_article">
+                <fieldset>
+                    <!-- <legend>宠物信息</legend> -->
+                    <div class="am-form-group petType" style="margin-bottom:20px">
+                        <label for="doc-select-1" style="display: block;">选择宠物类型</label>
+                        <select data-am-selected="{searchBox: 1}" id="cw"></select>
+                    </div>
+                    <div class="am-form-group am-form-file" style="display: block;">
+                        <label for="doc-ipt-pwd-1">添加视频</label>
+                        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+                        <input id="doc-form-file" type="file" multiple>
+                    </div>
+                    <div id="file-list"></div>
+                    <div class="am-form-group">
+                        <label for="doc-ipt-email-1">文章标题</label>
+                        <input type="text" class="title" id="doc-ipt-email-1" placeholder="输入文章标题">
+                    </div>
+                    <!-- 文章内容 -->
+                    <div class="am-form-group">
+                        <label for="doc-ipt-email-1">文章内容</label>
+                        <!-- 加载编辑器的容器 -->
+                        <div id="editor1">
+                                <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+                            </div>
+                    </div>
+                    <p>
+                        <button type="button" class="am-btn am-btn-default" id="sub">提交</button>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+     <!-- 配置文件 -->
+    <script type="text/javascript" src="js/wangEditor.min.js"></script>
+    <script type="text/javascript">
+        // 实例化编辑器
+        var E = window.wangEditor
+        var editor = new E('#editor')
+        // 或者 var editor = new E( document.getElementById('editor') )
+        editor.create();
+        var editor1 = new E('#editor1')
+        // 或者 var editor = new E( document.getElementById('editor') )
+        editor1.create()
+        var $selected = $('#type');
+        $selected.on('change', function () {
+            console.log()
+            if ($(".name span.am-fl")[0].innerText == "图文类型") {
+                $("#pic_article").show();
+                $("#video_article").hide()
+            } else if ($(".name span.am-fl")[0].innerText == "视频类型") {
+                $("#video_article").show();
+                $("#pic_article").hide()
+            }
+        });
+        var id=window.location.href.split("?")[1].split("=")[1];
+        var token=sessionStorage.getItem("token");
+        var userid=sessionStorage.getItem("admin_userid");
+        $.ajax({
+            url:"https://myyouta.com/mzXL/manage/getArticleinfo",
+            data:{
+                token:token,
+                userid:userid,
+                id:id
+            },
+            success:function(res){
+                if(res.code==100000){
+                    if (res.data[0].videoSrc == "") {
+                        $("#pic_article").show();
+                        $("#video_article").hide()
+                        editor.txt.html(res.data[0].text)
+                    } else{
+                        $("#video_article").show();
+                        $("#pic_article").hide();
+                        editor1.txt.html(res.data[0].text)
+                    }
+                    $(".title")[0].value=res.data[0].title;
+                }
+            }
+        })
+    </script>
+    <!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="assets/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+
+
+
+</body>
+
+</html>

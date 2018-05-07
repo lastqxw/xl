@@ -1,0 +1,344 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Amaze UI Admin index Examples</title>
+	<meta name="description" content="这是一个 index 页面">
+	<meta name="keywords" content="index">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="icon" type="image/png" href="assets/i/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<link rel="stylesheet" href="assets/css/amazeui.min.css" />
+	<link rel="stylesheet" href="assets/css/admin.css">
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/app.js"></script>
+	<style type="text/css">
+		body,
+		#main {
+			width: 98%;
+			margin: 0 auto;
+			margin-bottom: 50px;
+			background-color: #fff;
+		}
+
+		#form {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			margin: 0 auto;
+		}
+
+		.name,
+		.price,
+		.flavor,
+		.batching,
+		.integral,
+		.exchange,
+		.change,
+		.photo {
+			width: 100%;
+			line-height: 50px;
+			padding: 15px;
+			box-sizing: initial;
+			border: 1px solid #ddd;
+			border-top: none;
+		}
+
+		.photo {
+			height: 240px;
+			line-height: 240px;
+
+		}
+
+		.name>span,
+		.price>span,
+		.photo>span,
+		.flavor>span,
+		.batching>span,
+		.integral>span,
+		.exchange>span,
+		.change>span {
+			display: inline-block;
+			width: 15%;
+			height: 50px;
+			line-height: 50px;
+			font-size: 16px;
+			text-align: center;
+		}
+
+		.name>input,
+		.price>input,
+		.photo>input,
+		.flavor>input,
+		.batching>input,
+		.integral>input,
+		.exchange>input,
+		.change>input {
+			width: 30%;
+			height: 30px;
+			border-radius: 5px;
+			border: 1px solid #ddd;
+		}
+
+		#photo,
+		#photo1 {
+			display: inline-block;
+		}
+
+		#sub {
+			background-color: #fff;
+			border: 1px solid #333;
+			color: #333;
+			margin: 20px;
+			margin-left: 20px;
+		}
+
+		.add_flavor {
+			background-color: #4aaa4a;
+			display: inline-block;
+			border-radius: 10px;
+			width: 120px;
+		}
+
+		.add_flavor img {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+		}
+
+		.add_flavor span:last-child {
+			display: inline-block;
+			line-height: 30px;
+			text-align: center;
+			font-size: 12px;
+		}
+
+		.pl {
+			vertical-align: middle;
+			display: inline-table;
+		}
+
+		.pl span {
+			display: inline-table;
+			height: 31px;
+			line-height: 30px;
+			padding: 0px 20px;
+			color: #fff;
+			background-color: #5eb95e;
+			border-color: #5eb95e;
+			position: relative;
+			margin-right: 20px;
+		}
+
+		.del {
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			width: 16px;
+			height: 15px;
+			text-align: center;
+			line-height: 15px;
+			font-style: normal;
+			cursor: pointer;
+			font-size: 12px;
+		}
+	</style>
+	<!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+</head>
+
+<body>
+	<div class="admin-biaogelist">
+		<div class="listbiaoti am-cf">
+			<ul class="am-icon-flag on">商品管理</ul>
+			<dl class="am-icon-home" style="float: right;">
+				当前位置： 首页 >
+				<a href="shop_management.html" target="iframe">商品管理</a> >添加商品
+			</dl>
+		</div>
+		<div id="main">
+			<form action="" id="form">
+				<div class="name">
+					<span>配方编号:</span>
+					<input type="text" id="name" placeholder="" value="">
+				</div>
+				<div class="price">
+					<span>配方名字:</span>
+					<input type="text" id="price" placeholder="" value="">
+				</div>
+				<div class="photo">
+					<span>配方主图:</span>
+					<img src="" alt="" id="pic" class="pic" style="max-height: 240px;max-width: 320px">
+					<input type="file" id="photo" value="">
+				</div>
+				<div class="photo">
+					<span>配方主图（选中）:</span>
+					<img src="" alt="" id="pic1" class="pic" style="max-height: 240px;max-width: 320px">
+					<input type="file" id="photo1" value="">
+				</div>
+				<div class="price">
+					<span>粗灰粉:</span>
+					<input type="text" id="coarseAsh" placeholder="" value="">
+				</div>
+				<div class="price">
+					<span>粗纤维:</span>
+					<input type="text" id="coarseFiber" placeholder="" value="">
+				</div>
+				<div class="price">
+					<span>蛋白质含量:</span>
+					<input type="text" id="protein" placeholder="" value="">
+				</div>
+				<div class="price">
+					<span>水分含量:</span>
+					<input type="text" id="protein" placeholder="" value="">
+				</div>
+				<div class="batching">
+					<span>配料:</span>
+					<div class="pl">
+
+					</div>
+					<button type="button" class="am-btn am-btn-success am-btn-round" id="add_batching">+添加配料</button>
+				</div>
+				<div class="name" id="vitamin">
+					<span>选择维生素</span>
+					<select data-am-selected class="vitamin">
+					</select>
+				</div>
+				<div class="name" id="mineral">
+					<span>选择矿物质</span>
+					<select data-am-selected class="mineral">
+
+					</select>
+				</div>
+				<button type="button" class="am-btn" id="sub">添加商品</button>
+			</form>
+		</div>
+	</div>
+	<!-- 添加口味 弹窗-->
+	<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt1">
+		<div class="am-modal-dialog">
+			<div class="am-modal-hd">添加配料</div>
+			<div class="am-modal-bd">
+				配料名称：
+				<input type="text" class="am-modal-prompt-input">
+			</div>
+			<div class="am-modal-footer">
+				<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+				<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		//获取上传图片的路径base64；
+		//获取上传图片的路径base64；
+		$("#photo").change(function (e) {
+			var url = "https://myyouta/walk/uploadfile";
+			var formdata = new FormData();
+			formdata.append("file", $("#photo")[0].files[0]);
+			console.log(formdata);
+			$.ajax({
+				url: url, // 自行按需配置好完整的url，包括ip和端口号
+				type: "POST",
+				data: formdata,
+				async: false,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function (res) {
+					console.log(res);
+					var json = eval('(' + res + ')');
+					console.log(json);
+					if (json.code == 100000) {
+						$("#pic")[0].src = json.data;
+					} else {
+						alert(json.message);
+					}
+				},
+			});
+
+		});
+		// 获取矿物质
+		var token = sessionStorage.getItem("token");
+		var userid = sessionStorage.getItem("admin_userid");
+		$.ajax({
+			url: "https://myyouta.com/mzXL/food/selMineral",
+			data: {
+				token: token,
+				userid: userid,
+			},
+			success: function (res) {
+				console.log(res);
+				if (res.code == 100000) {
+					for (var i = 0; i < res.data.length; i++) {
+						$(".mineral").append('<option value="' + res.data[i].id + '">' + res.data[i].mineralDesc +
+							'</option>')
+					}
+				}
+			}
+		})
+		$.ajax({
+			url: "https://myyouta.com/mzXL/food/selVitamin",
+			data: {
+				token: token,
+				userid: userid,
+			},
+			success: function (res) {
+				console.log(res);
+				if (res.code == 100000) {
+					for (var i = 0; i < res.data.length; i++) {
+						$(".vitamin").append('<option value="' + res.data[i].id + '">' + res.data[i].mineralDesc +
+							'</option>')
+					}
+				}
+			}
+		})
+		// 添加配料
+		$('#add_batching').on('click', function () {
+			if ($(".pl span").length > 30) {
+				alert("对不起，最多只能添加30种配料")
+			} else {
+				$('#my-prompt1').modal({
+					relatedTarget: this,
+					onConfirm: function (e) {
+						console.log(e);
+						console.log(e);
+						$(".pl").append('<span>' + e.data + '<i class="del">X</i></span>')
+						$(".del").click(function () {
+							console.log($(this).parent())
+							$(this).parent().remove();
+						})
+					},
+					onCancel: function (e) {
+
+					}
+				});
+			}
+		});
+		$(".del").click(function () {
+			console.log($(this).parent())
+			$(this).parent().remove();
+		})
+		// 添加鲜粮组合
+		
+	</script>
+	<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script> 
+<![endif]-->
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="assets/js/amazeui.min.js"></script>
+	<!--<![endif]-->
+
+
+
+</body>
+
+</html>

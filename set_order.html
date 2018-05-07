@@ -1,0 +1,535 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>下单</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <style type="text/css">
+        body,
+        #main {
+            width: 98%;
+            margin: 0 auto;
+            margin-bottom: 50px;
+            background-color: #fff;
+        }
+
+        #form {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .name,
+        .price,
+        .flavor,
+        .batching,
+        .integral,
+        .exchange,
+        .change,
+        .photo {
+            width: 100%;
+            line-height: 50px;
+            padding: 15px;
+            box-sizing: initial;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .photo {
+            height: 240px;
+            line-height: 240px;
+
+        }
+
+        .name>span,
+        .price>span,
+        .photo>span,
+        .flavor>span,
+        .batching>span,
+        .integral>span,
+        .exchange>span,
+        .change>span {
+            display: inline-block;
+            width: 15%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .name>input,
+        .price>input,
+        .photo>input,
+        .flavor>input,
+        .batching>input,
+        .integral>input,
+        .exchange>input,
+        .change>input {
+            width: 10%;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #photo {
+            display: inline-block;
+        }
+
+        #sub {
+            background-color: #fff;
+            border: 1px solid #333;
+            color: #333;
+            margin: 20px;
+            margin-left: 20px;
+        }
+
+        .add_flavor {
+            background-color: #4aaa4a;
+            display: inline-block;
+            border-radius: 10px;
+            width: 120px;
+        }
+
+        .add_flavor img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .add_flavor span:last-child {
+            display: inline-block;
+            line-height: 30px;
+            text-align: center;
+            font-size: 12px
+        }
+        .li{
+            width:100px;
+            text-align: center;
+            height: 100px;
+            display: inline-table;
+            
+        }
+        .li:first-child{
+            border:1px solid #F77B17
+        }
+        .li:first-child>.kw{
+            color: #F77B17
+        }
+        .li span{
+            width:100%;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            display:block;
+        }
+        .pl{
+            font-size: 12px;
+            padding:5px 10px;
+            border: 1px solid #ddd;
+            margin-right: 20px;
+            border-radius: 5px
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+    </head>
+
+    <body>
+        <div class="admin-biaogelist">
+            <div class="listbiaoti am-cf">
+                <ul class="am-icon-flag on">下单</ul>
+                <dl class="am-icon-home" style="float: right;">
+                    当前位置： 首页 >
+                    <a href="place_order.html" target="iframe">订单管理</a> >用户下单
+                </dl>
+            </div>
+            <div id="main">
+                <form class="am-form">
+                    <fieldset>
+                        <!-- <legend>宠物信息</legend> -->
+
+                        <div class="am-form-group">
+                            <label for="doc-ipt-email-1">选择需要定制鲜粮的宠物</label>
+                            <select id="doc-select-1 " class="pet" ></select>
+                        </div>
+                        <div class="am-form-group" id="kw">
+                            
+                            <span class="am-form-caret"></span>
+                        </div>
+                        <div class="am-form-group">
+                            <p style="margin-bottom:20px">配料表</p>
+                            <p class="plb">
+                                
+                            </p>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="doc-select-2" style="display:block;margin-bottom:20px">食量选择</label>
+                            <select name="" class="halfFood" id="doc-select-1">
+                                <option value="1">选为主食</option>
+                                <option value="2">选为辅食</option>
+                            </select>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="doc-select-2">选择定制量</label>
+                            <select class="petShape" id="doc- -2">
+                                
+                            </select>
+                        </div>
+                        <p class="ljdz">
+                            <button type="button" class="am-btn am-btn-default" id="sub">立即定制</button>
+                        </p>
+                        <div class="am-form-group" id="address" style="display:none">
+                            <label for="doc-select-2" style="display:block;margin-bottom:20px">选择收货地址</label>
+                            <select name="" id="doc-select-1" class="dizi">
+                                
+                            </select>
+                        </div>
+                        <div class="am-form-group" id="add_address" style="display:none">
+                            <label for="doc-select-2" style="display:block;margin-bottom:20px">选择收货地址</label>
+                            <input type="text" id="addressee" placeholder="请输入收件人姓名">                                
+                            <input type="text" id="phone" placeholder="请输入收件人电话">                                
+                            <input type="text" id="address1" placeholder="请输入收件地址省市县">
+                            <input type="text" id="addressinfo" placeholder="请输入详细地址">
+                        </div>
+                        <div class="am-form-group" id="yhq" style="display:none">
+                            <label for="doc-select-2" style="display:block;margin-bottom:20px">选择优惠券</label>
+                            <select name="" id="doc-select-1" class="yhq">
+                                <option value="0">请选择优惠券</option>
+                            </select>
+                        </div>
+                        <p class="play" style="display:none">
+                            <span style="display:block;margin-bottom:20px">应支付金额：<span class="money">正在计算价格.....</span></span>
+                            <button type="button" class="am-btn am-btn-default" id="sub1">确认收款</button>
+                        </p>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <script src="js/demo.js"></script>
+        <script type="text/javascript">
+            // 截取用户的userid和token
+            var url=window.location.href;
+            var userid=url.split("?")[1].split("&")[0].split("=")[1]
+            var user_token=url.split("?")[1].split("&")[1].split("=")[1]
+            //获取该用户下宠物列表
+            var petid="";
+            $.ajax({
+                url: "https://myyouta.com/mzXL/User/getPets",
+                async:false,
+                data: {
+                    token: user_token,
+                    userid:userid,
+                    pageSize: 200,
+                    pageNum: 1
+                },
+                success: function (res) {
+                    console.log(res)
+                    if(res.code==100000){
+                        petid=res.data[0].petid;
+                        for(var i=0;i<res.data.length;i++){
+                            $(".pet").append('<option value="'+res.data[i].petid+'">'+res.data[i].petName+'</option>')
+                        }
+                    }else if(res.code==100003){
+                        $(".am-form")[0].innerHTML="";
+                        alert(res.message);
+                        window.location.href="add_pet.html?token="+user_token+"&userid="+userid;
+                    }
+                }
+            })
+           
+            //获取宠物鲜粮类型
+            function getShow(petid){
+                $.ajax({
+                    url:"https://myyouta.com/mzXL/Order/showOptionalOrder",
+                    async:false,
+                    data:{
+                        token:user_token,
+                        userid:userid,
+                        petId:petid
+                    },
+                    success:function(res){
+                        console.log(res);
+                        if(res.code==100000){
+                            $("#kw")[0].innerHTML="";
+                            sessionStorage.setItem("FormulaId",res.data.getFormula[0].FormulaId)
+                            $("#kw").append('<label for="doc-select-1" style="display:block">选择鲜粮的口味</label>')
+                            for(var i=0;i<res.data.getFormula.length;i++){
+                                if(i==0){
+                                    $("#kw").append(' <p class="li" style="border:1px solid #f77b17" data-FormulaId="'+res.data.getFormula[i].FormulaId+'" data-imgSelected="'+res.data.getFormula[i].imgsrcSelected+'" data-img="'+res.data.getFormula[i].imgsrc+'"><img src="'+res.data.getFormula[i].imgsrcSelected+'" alt="" class="img"><span class="kw" style="color:#f77b17">'+res.data.getFormula[i].Flavor+'</span></p>')
+                                }else{
+                                    $("#kw").append(' <p class="li" data-FormulaId="'+res.data.getFormula[i].FormulaId+'" data-imgSelected="'+res.data.getFormula[i].imgsrcSelected+'" data-img="'+res.data.getFormula[i].imgsrc+'"><img src="'+res.data.getFormula[i].imgsrc+'" alt="" class="img"><span class="kw">'+res.data.getFormula[i].Flavor+'</span></p>')
+                                }
+                                
+                               
+                            }
+                            $(".li").click(function(){
+                                console.log($(".li"))
+                                for(var i=0;i<$(".li").length;i++){
+                                    $(".li")[i].children[0].src=$(".li")[i].dataset.img;
+                                }
+                                console.log($(this))
+                                var imgsrcSelected=$(this)[0].dataset.imgselected;
+                                $(".li").css("border","none");
+                                $(".li span").css("color","#000")
+                                $(this).css("border","1px solid #F77B17");
+                                $(this)[0].children[1].style.color="#F77B17";
+                                $(this)[0].children[0].src=imgsrcSelected;
+                                var FormulaId=$(this)[0].dataset.formulaid
+                                getFoodFormulaByid(FormulaId)
+                                sessionStorage.setItem("FormulaId",FormulaId)
+                            })
+                            for(var i=0;i<res.data.orderFoodCycle.length;i++){
+                                $(".petShape").append('<option data-cycle="'+res.data.orderFoodCycle[i].cycle+'" data-days="'+res.data.orderFoodCycle[i].cycleDays+'" value="'+res.data.orderFoodCycle[i].id+'">'+res.data.orderFoodCycle[i].cycle+'周期(每周期'+res.data.orderFoodCycle[i].cycleDays+'天,每'+res.data.orderFoodCycle[i].cycleDays+'周期发一次货)</option>')
+                            }
+                            sessionStorage.setItem("mealWeight",res.data.petInfo)
+                        }
+                    }
+                })
+            }
+            function getFoodFormulaByid(FormulaId){
+                console.log(FormulaId)
+                $.ajax({
+                    url:'https://myyouta.com/mzXL/Order/getFoodFormulaByid',
+                    data:{
+                        "token":user_token,
+                        "userid":userid,
+                        "formulaId":FormulaId
+                    },
+                    success:function(res){
+                        console.log(res);
+                        if(res.code==100000){
+                            $(".plb")[0].innerHTML="";
+                            if(res.data.rawMaterial1 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial1+'</span>')
+                            }
+                            if(res.data.rawMaterial2 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial2+'</span>')
+                            }
+                            if(res.data.rawMaterial3 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial3+'</span>')
+                            }
+                            if(res.data.rawMaterial4 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial4+'</span>')
+                            }
+                            if(res.data.rawMaterial5 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial5+'</span>')
+                            }
+                            if(res.data.rawMaterial6 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial6+'</span>')
+                            }
+                            if(res.data.rawMaterial7 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial7+'</span>')
+                            }
+                            if(res.data.rawMaterial8 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial8+'</span>')
+                            }
+                            if(res.data.rawMaterial9 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial9+'</span>')
+                            }
+                            if(res.data.rawMaterial10 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial10+'</span>')
+                            }
+                            if(res.data.rawMaterial11 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial11+'</span>')
+                            } 
+                            if(res.data.rawMaterial12 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial12+'</span>')
+                            } 
+                            if(res.data.rawMaterial13 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial13+'</span>')
+                            } 
+                            if(res.data.rawMaterial14 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial14+'</span>')
+                            } 
+                            if(res.data.rawMaterial15 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial15+'</span>')
+                            } 
+                            if(res.data.rawMaterial16 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial16+'</span>')
+                            }
+                            if(res.data.rawMaterial17 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial17+'</span>')
+                            }
+                            if(res.data.rawMaterial18 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial18+'</span>')
+                            }
+                            if(res.data.rawMaterial19 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial19+'</span>')
+                            }
+                            if(res.data.rawMaterial20 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial20+'</span>')
+                            }
+                            if(res.data.rawMaterial21 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial21+'</span>')
+                            }
+                            if(res.data.rawMaterial22 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial22+'</span>')
+                            }
+                            if(res.data.rawMaterial23 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial23+'</span>')
+                            }
+                            if(res.data.rawMaterial24 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial24+'</span>')
+                            }
+                            if(res.data.rawMaterial25 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial25+'</span>')
+                            }
+                            if(res.data.rawMaterial26 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial26+'</span>')
+                            }
+                            if(res.data.rawMaterial27 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial27+'</span>')
+                            }
+                            if(res.data.rawMaterial28 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial28+'</span>')
+                            }
+                            if(res.data.rawMaterial29 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial29+'</span>')
+                            }
+                            if(res.data.rawMaterial30 !=""){
+                                $(".plb").append('<span class="pl">'+res.data.rawMaterial30+'</span>')
+                            }
+                        }
+                    }
+                })
+            }
+            window.onload=function(){
+                var formulaId=sessionStorage.getItem("FormulaId");
+                console.log(petid)
+                getFoodFormulaByid(formulaId);
+                getShow(petid);
+                
+
+            } 
+            $(".halfFood").change(function(){
+                var value=$(".halfFood option:selected")[0].value;
+                if(value==2){
+                    $(".petShape")[0].innerHTML="";
+                    $(".petShape").append('<option data-cycle="1" data-days="7" value="">1周期(每周期7天,选择辅食只能购买一周期)</option>')
+                }else{
+                    console.log(petid);
+                    $(".petShape")[0].innerHTML="";
+                    getShow(petid)
+                }
+            })
+            $(".pet").change(function(){
+                var pid=$(".pet option:selected")[0].value;
+                getShow(pid);
+            })
+            // 创建订单
+            $("#sub").click(function(){
+                $("#address").show();
+                $("#yhq").show();
+                $(".play").show();
+                $(".ljdz").hide();
+                // 创建订单 获取金额
+                var mealWeight=sessionStorage.getItem("mealWeight");
+                var petid=$(".pet option:selected")[0].value;
+                var cycle=$(".petShape option:selected")[0].dataset.cycle;
+                var days=$(".petShape option:selected")[0].dataset.days;
+                var FormulaId=sessionStorage.getItem("FormulaId");
+                var halfFood=$(".halfFood option:selected")[0].value;
+                $.ajax({
+                    url:"https://myyouta.com/mzXL/Order/createOrder",
+                    data:{
+                        token:user_token,
+                        userid:userid,
+                        petid:petid,
+                        cycleDay:days,
+                        foodCycle:cycle,
+                        formulaId:FormulaId,
+                        halfFood:halfFood,
+                        // addressId:39,
+                        // paymentMethod:1,
+                    },
+                    success:function(res){
+                        console.log(res);
+                        if(res.code==100000){
+                            $(".money")[0].innerText="￥"+res.data.priceReally;
+                            $("#sub1").click(function(){
+                                $.ajax({
+                                    url:'https://myyouta.com/mzXL/enterReceivables',
+                                    data:{
+                                        "userid":res.data.userId,
+                                        "token":user_token,
+                                        "commonUserId":res.data.userId,
+                                        "commonOrderId":res.data.orderid,
+                                    },
+                                    success:function(re){
+                                        console.log(re)
+                                        if(re.code==100000){
+                                            alert("确认成功")
+                                            history.go(-1);
+                                        }
+                                    },
+                                    error:function(){
+                                        alert("服务器异常，请稍后重试")
+                                    }
+                                })
+                            })
+                        }
+                    }
+                })
+                // 获取收货地址
+                $.ajax({
+                    url:"https://myyouta.com/mzXL/manage/getAddress",
+                    data:{
+                        token:user_token,
+                        userid:userid
+                    },
+                    success:function(res){
+                        console.log(res);
+                        if(res.code==100000){
+                            $("#address").show();
+                            $("#add_address").hide();
+                            $(".dizi")[0].innerHTML="";
+                            for(var i=0;i<res.data.length;i++){
+                                $(".dizi").append('<option value="'+res.data[i].id+'">'+res.data[i].addressee+'  '+res.data[i].address+res.data[i].addressinfo+'   '+res.data[i].phone+'</option>')
+                            }
+                        }else{
+                            alert(res.message);
+                            $("#address").hide();
+                            $("#add_address").show();
+                        }
+                    }
+                })
+            })
+            //计算总价
+            
+            //添加收货地址
+            // 选择优惠券
+            // 确认收款
+        </script>
+        <!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+        <!--[if (gte IE 9)|!(IE)]><!-->
+        <script src="assets/js/amazeui.min.js"></script>
+        <!--<![endif]-->
+
+
+
+    </body>
+
+</html>

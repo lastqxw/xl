@@ -1,0 +1,167 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Amaze UI Admin index Examples</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <link rel="stylesheet" href="css/animate.css">
+  <style type="text/css">
+    #shop_name {
+      display: inline-table;
+      width: 10%;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 5px;
+      margin-right: 30px;
+      border: 1px solid #ddd;
+      padding-left: 5px;
+    }
+  </style>
+  <script src="js/dialog.js"></script>
+</head>
+
+<body>
+  <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+  </head>
+
+  <body>
+    <div class="admin-biaogelist">
+      <div class="listbiaoti am-cf">
+        <ul class="am-icon-flag on"> 客户管理</ul>
+        <dl class="am-icon-home" style="float: right;"> 当前位置： 首页 >
+          <a href="./user_files.html" target="iframe">用户档案</a>
+        </dl>
+        <dl>
+          <button type="button" class="am-btn am-btn-danger am-round am-btn-xs am-icon-plus" id="add_user"> 添加用户</button>
+        </dl>
+      </div>
+      <div class="listbiaoti am-cf" style="margin-top: 0px;padding:15px;height:auto;">
+          <span>客户手机号：</span>
+          <input type="text" placeholder="请输入手机号" id="shop_name">
+          <button class="am-btn am-btn-primary am-btn-xs am-text-info" id="search" style="height:29px">
+            <i class="am-icon-search"></i>
+            搜索
+          </button>
+        </div>
+      <form class="am-form am-g" id="quan">
+        <table width="100%" class="am-table am-table-bordered am-table-centered">
+          <thead>
+            <tr>
+                <th class="table-type"></th>
+              <th class="table-id">编号</th>
+              <th class="table-title">用户账号</th>
+              <th class="table-type">用户昵称</th>
+             
+              <th class="table-type">用户积分</th>
+              <th width="130px" class="table-set">操作</th>
+            </tr>
+          </thead>
+          <tbody id="table">
+
+          </tbody>
+        </table>
+      </form>
+      <ul class="am-pagination am-pagination-right" id="pagination">
+
+      </ul>
+    </div>
+    <script type="text/javascript">
+      $("#add_user").click(function () {
+        window.location.href = "add_user.html";
+      })
+      // 获取全部用户列表
+      function getUser(userPhone, pageNum) {
+        var token = sessionStorage.getItem("token");
+        var userid = sessionStorage.getItem("admin_userid");
+        $.ajax({
+          type: "get",
+          url: "https://myyouta.com/mzXL/User/allUser",
+          // dataType:'jsonp',
+          data: {
+            token: token,
+            userId: userid,
+            pageNum: pageNum,
+            userPhone: userPhone,
+            pageSize: 10
+          },
+          success: function (res) {
+            console.log(res);
+            if (res.code == 100000) {
+              // 获取总条数 start
+              $("#pagination")[0].innerHTML = "";
+              var count = res.count;
+              if (count % 10 == 0) {
+                for (var i = 0; i < count / 10; i++) {
+                  $("#pagination").append(' <li><a href="#" class="li">' + (i + 1) + '</a></li>')
+                }
+              } else {
+                for (var i = 0; i < count / 10; i++) {
+                  $("#pagination").append(' <li class="li"><a href="#" class="li">' + (i + 1) + '</a></li>')
+                }
+              }
+               // 分页切换
+               $("#pagination .li").click(function(){
+                 var pageNum=$(this)[0].innerText;
+                 getUser("",pageNum);
+                 console.log($(this));
+               })
+              // end
+              $("#table")[0].innerHTML = "";
+              for (var i = 0; i < res.data.length; i++) {
+                $("#table").append('<tr><td class="am-text-middle"><input type="checkbox" value="' + res.data[i].userid +
+                  '"></td><td class="am-text-middle">' + (i + 1) + '</td><td class="am-text-middle">' + res.data[
+                    i].phone + '</td><td class="am-text-middle">' + res.data[i].name +
+                  '</td><td class="am-text-middle">' + res.data[i].integral +
+                  '</td><td style="width:25%"><button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" title=""><a class="am-icon-pencil-square-o" class="u2" href="add_pet.html?userid=' +
+                  res.data[i].userid +
+                  '&token='+res.data[i].token+'" target="iframe">添加宠物</a></button> <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" title=""><a class="am-icon-pencil-square-o" class="u2" href="modify_shop.html?userid=' +
+                  res.data[i].userid +
+                  '" target="iframe">查看用户详细信息</a></button><button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger am-round" target="" class="del"onclick="del(this)">导出用户信息</button></td></tr>'
+                )
+              }
+
+
+            }
+          },
+        })
+      }
+      // 按手机号查询用户
+      $("#search").click(function(){
+        var phone=$("#shop_name")[0].value;
+        getUser(phone, 1);
+      })
+      // 页面加载时显示第一页10个用户
+      window.onload=function(){
+        getUser("", 1);
+      }
+    </script>
+    <!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="assets/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+
+
+
+  </body>
+
+</html>

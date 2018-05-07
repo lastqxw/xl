@@ -1,0 +1,335 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Amaze UI Admin index Examples</title>
+	<meta name="description" content="这是一个 index 页面">
+	<meta name="keywords" content="index">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="icon" type="image/png" href="assets/i/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<link rel="stylesheet" href="assets/css/amazeui.min.css" />
+	<link rel="stylesheet" href="assets/css/admin.css">
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/app.js"></script>
+	<style type="text/css">
+		body,
+		#main {
+			width: 98%;
+			margin: 0 auto;
+			margin-bottom: 50px;
+			background-color: #fff;
+		}
+
+		#form {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			margin: 0 auto;
+		}
+
+		.name,
+		.price,
+		.flavor,
+		.batching,
+		.integral,
+		.exchange,
+		.change,
+		.photo {
+			width: 100%;
+			line-height: 50px;
+			padding: 15px;
+			box-sizing: initial;
+			border: 1px solid #ddd;
+			border-top: none;
+		}
+
+		.photo {
+			height: 240px;
+			line-height: 240px;
+
+		}
+
+		.name>span,
+		.price>span,
+		.photo>span,
+		.flavor>span,
+		.batching>span,
+		.integral>span,
+		.exchange>span,
+		.change>span {
+			display: inline-block;
+			width: 15%;
+			height: 50px;
+			line-height: 50px;
+			font-size: 16px;
+			text-align: center;
+		}
+
+		.name>input,
+		.price>input,
+		.photo>input,
+		.flavor>input,
+		.batching>input,
+		.integral>input,
+		.exchange>input,
+		.change>input {
+			width: 30%;
+			height: 30px;
+			border-radius: 5px;
+			border: 1px solid #ddd;
+		}
+
+		#photo,
+		#photo1 {
+			display: inline-block;
+		}
+
+		#sub {
+			background-color: #fff;
+			border: 1px solid #333;
+			color: #333;
+			margin: 20px;
+			margin-left: 20px;
+		}
+
+		.add_flavor {
+			background-color: #4aaa4a;
+			display: inline-block;
+			border-radius: 10px;
+			width: 120px;
+		}
+
+		.add_flavor img {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+		}
+
+		.add_flavor span:last-child {
+			display: inline-block;
+			line-height: 30px;
+			text-align: center;
+			font-size: 12px;
+		}
+
+		.pl {
+			vertical-align: middle;
+			display: inline-table;
+		}
+
+		.pl span {
+			display: inline-table;
+			height: 31px;
+			line-height: 30px;
+			padding: 0px 20px;
+			color: #fff;
+			background-color: #5eb95e;
+			border-color: #5eb95e;
+			position: relative;
+			margin-right: 20px;
+		}
+
+		.del {
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			width: 16px;
+			height: 15px;
+			text-align: center;
+			line-height: 15px;
+			font-style: normal;
+			cursor: pointer;
+			font-size: 12px;
+		}
+	</style>
+	<!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+</head>
+
+<body>
+	<div class="admin-biaogelist">
+		<div class="listbiaoti am-cf">
+			<ul class="am-icon-flag on">添加矿物质组合</ul>
+			<dl class="am-icon-home" style="float: right;">
+				当前位置： 首页 >
+				<a href="shop_management.html" target="iframe">商品管理</a> >添加矿物质组合
+			</dl>
+		</div>
+		<div id="main">
+			<form action="" id="form">
+				<div class="name">
+					<span>矿物质组合描述:</span>
+					<input type="text" id="mineralDesc" placeholder="" value="">
+				</div>
+				<div class="price">
+					<span>矿物质1:</span>
+					<input type="text" id="mineral1" placeholder="" value="">
+				</div>
+				<div class="price">
+					<span>矿物质2:</span>
+					<input type="text" id="mineral2" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质3:</span>
+					<input type="text" id="mineral3" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质14:</span>
+					<input type="text" id="mineral4" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质5:</span>
+					<input type="text" id="mineral5" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质6:</span>
+					<input type="text" id="mineral6" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质7:</span>
+					<input type="text" id="mineral7" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质8:</span>
+					<input type="text" id="mineral8" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质9:</span>
+					<input type="text" id="mineral9" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质10:</span>
+					<input type="text" id="mineral10" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质11:</span>
+					<input type="text" id="mineral11" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质12:</span>
+					<input type="text" id="mineral12" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质13:</span>
+					<input type="text" id="mineral13" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质14:</span>
+					<input type="text" id="mineral14" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质15:</span>
+					<input type="text" id="mineral15" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质16:</span>
+					<input type="text" id="mineral16" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质17:</span>
+					<input type="text" id="mineral17" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质18:</span>
+					<input type="text" id="mineral18" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质19:</span>
+					<input type="text" id="mineral19" placeholder="" value="">
+                </div>
+                <div class="price">
+					<span>矿物质20:</span>
+					<input type="text" id="mineral20" placeholder="" value="">
+                </div>
+                
+				<button type="button" class="am-btn" id="sub">添加矿物质组合</button>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var token=sessionStorage.getItem('token');
+        var userid=sessionStorage.getItem('admin_userid');
+        $("#sub").click(function(){
+            var mineralDesc=$("#mineralDesc")[0].value;
+            var mineral1=$("#mineral1")[0].value;
+            var mineral2=$("#mineral2")[0].value;
+            var mineral3=$("#mineral3")[0].value;
+            var mineral4=$("#mineral4")[0].value;
+            var mineral5=$("#mineral5")[0].value;
+            var mineral6=$("#mineral6")[0].value;
+            var mineral7=$("#mineral7")[0].value;
+            var mineral8=$("#mineral8")[0].value;
+            var mineral9=$("#mineral9")[0].value;
+            var mineral10=$("#mineral10")[0].value;
+            var mineral11=$("#mineral11")[0].value;
+            var mineral12=$("#mineral12")[0].value;
+            var mineral13=$("#mineral13")[0].value;
+            var mineral14=$("#mineral14")[0].value;
+            var mineral15=$("#mineral15")[0].value;
+            var mineral16=$("#mineral16")[0].value;
+            var mineral17=$("#mineral17")[0].value;
+            var mineral18=$("#mineral18")[0].value;
+            var mineral19=$("#mineral19")[0].value;
+            var mineral20=$("#mineral20")[0].value;
+            $.ajax({
+                url:"https://myyouta.com/mzXL/food/addMineral",
+				type:"post",
+                data:{
+                    token:token,
+                    userid:userid,
+                    mineralDesc:mineralDesc,
+                    mineral1:mineral1,
+                    mineral2:mineral2,
+                    mineral3:mineral3,
+                    mineral4:mineral4,
+                    mineral5:mineral5,
+                    mineral6:mineral6,
+                    mineral7:mineral7,
+                    mineral8:mineral8,
+                    mineral9:mineral9,
+                    mineral10:mineral10,
+                    mineral11:mineral11,
+                    mineral12:mineral12,
+                    mineral13:mineral13,
+                    mineral14:mineral14,
+                    mineral15:mineral15,
+                    mineral16:mineral16,
+                    mineral17:mineral17,
+                    mineral18:mineral18,
+                    mineral19:mineral19,
+                    mineral20:mineral20
+                },
+                success:function(res){
+                    if(res.code==100000){
+                        alert("添加成功")
+                        window.location.href="search_mineral.html";
+                    }else{
+                        alert(res.message)
+                    }
+                }
+            })
+        })
+		
+	</script>
+	<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script> 
+<![endif]-->
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="assets/js/amazeui.min.js"></script>
+	<!--<![endif]-->
+
+
+
+</body>
+
+</html>

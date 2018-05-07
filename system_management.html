@@ -1,0 +1,163 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Amaze UI Admin index Examples</title>
+	<meta name="description" content="这是一个 index 页面">
+	<meta name="keywords" content="index">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="icon" type="image/png" href="assets/i/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<link rel="stylesheet" href="assets/css/amazeui.min.css" />
+	<link rel="stylesheet" href="assets/css/admin.css">
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/app.js"></script>
+	<link rel="stylesheet" href="css/animate.css">
+	<style type="text/css">
+		#shop_name {
+			display: inline-table;
+			width: 10%;
+			height: 30px;
+			line-height: 30px;
+			border-radius: 5px;
+			margin-right: 30px;
+			border: 1px solid #ddd;
+			padding-left: 5px;
+			position: absolute;
+		}
+	</style>
+	<script src="js/dialog.js"></script>
+	<!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+	</head>
+
+	<body>
+		<div class="admin-biaogelist">
+			<div class="listbiaoti am-cf">
+				<ul class="am-icon-flag on"> 订单管理</ul>
+				<dl class="am-icon-home" style="float: right;"> 当前位置： 首页 >
+					<a href="order.html" target="iframe">订单管理</a>
+				</dl>
+				<!--  -->
+
+			</div>
+			<form class="am-form am-g" id="quan">
+				<table width="100%" class="am-table am-table-bordered am-table-centered">
+					<thead>
+						<tr>
+							<th class="table-id" style="width: 25%">操作时间</th>
+							<th class="table-title">操作人</th>
+							<th class="table-type">操作内容</th>
+						</tr>
+					</thead>
+					<tbody id="table">
+					</tbody>
+				</table>
+				<ul class="am-pagination am-pagination-right" id="pagination">
+
+				</ul>
+			</form>
+		</div>
+		<script type="text/javascript">
+			// 页面加载执行order_list函数,生成所有订单列表
+			window.onload = function () {
+				order_list("", 1);
+			}
+			// 搜索订单
+			$("#status_search").click(function () {
+				var status = $("#shop_name option:selected")[0].value;
+				if (status == 0) {
+					status = "";
+				}
+				order_list(status, 1);
+			})
+			// 切换分页
+			$(".li").click(function () {
+				var pageNum = $(this)[0].innerText;
+				console.log(pageNum)
+				order_list("", pageNum);
+			})
+			$("#add_shop").click(function () {
+				window.location.href = "add_shop.html";
+			})
+			// 查询订单详情
+			// 查询客户详情
+			// 查看订单所对应的宠物详情
+			// 查询订单列表 
+			function order_list(pageNum) {
+				var token = sessionStorage.getItem("token");
+				var userid = sessionStorage.getItem("admin_userid");
+				// https://myyouta.com/mzXL/getOrders?token=2&userid=2&status=1&pageNum=1&pageSize=100
+				$.ajax({
+					type: "get",
+					url: "http://192.168.10.68:8080/mzXL/getOperationRecord",
+					// dataType:'jsonp',
+					data: {
+						token: token,
+						userid: userid,
+						pageNum: pageNum,
+						pageSize: 10
+					},
+					success: function (res) {
+						console.log(res);
+						if (res.code == 100000) {
+							// 获取总条数 start
+							$("#pagination")[0].innerHTML = "";
+							var count = res.count;
+							if (count % 10 == 0) {
+								for (var i = 0; i < count / 10; i++) {
+									$("#pagination").append(' <li><a href="#" class="li">' + (i + 1) + '</a></li>')
+								}
+							} else {
+								for (var i = 0; i < count / 10; i++) {
+									$("#pagination").append(' <li class="li"><a href="#" class="li">' + (i + 1) + '</a></li>')
+								}
+							}
+							// 分页切换
+							$("#pagination .li").click(function () {
+								var pageNum = $(this)[0].innerText;
+								order_list("", pageNum);
+								console.log($(this));
+							})
+							// end
+							// 循环生成表格
+							$("#table")[0].innerHTML = "";
+							for (var i = 0; i < res.data.length; i++) {
+								// 判断状态 1.未付款
+								$("#table").append('<tr><td>'+res.data[i].stringCreateTime+'</td><td>'+res.data[i].adminUserId+'</td><td>'+res.data[i].doDesc+'</td></tr>')
+							}
+							// 
+						}
+					}
+				})
+			}
+			window.onload=function(){
+				order_list(1) 
+			}
+		</script>
+		<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+		<!--[if (gte IE 9)|!(IE)]><!-->
+		<script src="assets/js/amazeui.min.js"></script>
+		<!--<![endif]-->
+
+		<script>
+			function xq(e) {
+				var id = $(e)[0].dataset.orderid;
+				window.location.href = "order_details.html?id=" + id
+			}
+		</script>
+
+	</body>
+
+</html>

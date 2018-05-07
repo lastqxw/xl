@@ -1,0 +1,524 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>添加宠物信息</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <script src="assets/js/jquery.min.js"></script>
+   
+    <style type="text/css">
+        body,
+        #main {
+            width: 98%;
+            margin: 0 auto;
+            margin-bottom: 50px;
+            background-color: #fff;
+        }
+
+        #form {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .name,
+        .price,
+        .flavor,
+        .batching,
+        .integral,
+        .exchange,
+        .change,
+        .photo {
+            width: 100%;
+            line-height: 50px;
+            padding: 15px;
+            box-sizing: initial;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .photo {
+            height: 240px;
+            line-height: 240px;
+
+        }
+
+        .name>span,
+        .price>span,
+        .photo>span,
+        .flavor>span,
+        .batching>span,
+        .integral>span,
+        .exchange>span,
+        .change>span {
+            display: inline-block;
+            width: 15%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .name>input,
+        .price>input,
+        .photo>input,
+        .flavor>input,
+        .batching>input,
+        .integral>input,
+        .exchange>input,
+        .change>input {
+            width: 10%;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #photo {
+            display: inline-block;
+        }
+
+        #sub {
+            background-color: #fff;
+            border: 1px solid #333;
+            color: #333;
+            margin: 20px;
+            margin-left: 20px;
+        }
+
+        .add_flavor {
+            background-color: #4aaa4a;
+            display: inline-block;
+            border-radius: 10px;
+            width: 120px;
+        }
+
+        .add_flavor img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .add_flavor span:last-child {
+            display: inline-block;
+            line-height: 30px;
+            text-align: center;
+            font-size: 12px;
+        }
+        select,input{
+            width:200px !important;
+            height: 31px !important;
+        }
+        .am-form-group{
+            display: inline-table;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+    </head>
+
+    <body>
+        <div class="admin-biaogelist">
+            <div class="listbiaoti am-cf">
+                <ul class="am-icon-flag on">添加宠物</ul>
+                <dl class="am-icon-home" style="float: right;">
+                    当前位置： 首页 >
+                    <a href="shop_management.html" target="iframe">用户管理</a> >添加宠物
+                </dl>
+            </div>
+            <div id="main">
+                <form class="am-form">
+                    <fieldset>
+                        <!-- <legend>宠物信息</legend> -->
+                        <div class="am-form-group am-form-file" style="display: block;">
+                            <label for="doc-ipt-pwd-1">宠物头像</label>
+                          <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+                          <input id="doc-form-file" type="file" multiple>
+                        </div>
+                        <div id="file-list"></div>
+                        <div class="am-form-group">
+                            <label for="doc-ipt-email-1">昵称</label>
+                            <input type="text" class="petName" id="doc-ipt-email-1" placeholder="输入宠物昵称">
+                        </div>
+                        <div class="am-form-group">
+                            <label for="doc-ipt-pwd-1">生日</label>
+                            <input type="text" class="am-form-field petBirthday" placeholder="点击选择出生日期" data-am-datepicker="{theme: 'success'}" readonly/>
+                        </div>
+                        <div class="am-form-group petType" style="margin-bottom:20px">
+                            <label for="doc-select-1" style="display: block;">选择宠物类型</label>
+                            <select  data-am-selected="{searchBox: 1}" id="cw"></select>
+                        </div>
+                       <div class="am-form-group" id="petSex" style="margin-bottom:20px">
+                            <label for="doc-select-1" style="display: block;">性别</label>
+                            <select data-am-selected  >
+                                <option value="0">公</option>
+                                <option value="1">母</option>
+                            </select>
+                            <span class="am-form-caret"></span>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="doc-ipt-email-1">体重(kg)</label>
+                            <input type="text" class="petWeight" id="doc-ipt-email-1" placeholder="输入宠物体重">
+                        </div>
+                        <div class="am-form-group" id="petIsspay" style="margin-bottom:20px">
+                            <label for="doc-select-1" style="display: block;">是否绝育</label>
+                            <select class="petIsspay" data-am-selected >
+                                <option value="0">是</option>
+                                <option value="1">否</option>
+                            </select>
+                        </div>
+                       <div class="am-form-group" id="petShape" style="margin-bottom:20px">
+                            <label for="doc-select-1" style="display: block;">体型</label>
+                            <select class="petShape" data-am-selected ></select>
+                        </div>
+                       <div class="am-form-group" id="petActivity" style="margin-bottom:20px">
+                            <label for="doc-select-1" style="display: block;">活跃度</label>
+
+                            <select class="petActivity" data-am-selected >
+                                <option value="0">正常</option>
+                                <option value="1">活跃</option>
+                            </select>
+                        </div>
+                        <div class="am-form-group" id="petAllergy" style="margin-bottom:20px">
+                            <label for="doc-select-1" style="display: block;">过敏源</label>
+                            <select multiple data-am-selected class="petAllergy">
+                                <option value="0">正常</option>
+                                <option value="1">活跃</option>
+                            </select>
+                        </div>
+                        <div class="am-form-group" id="petHistoryFood" style="margin-bottom:20px">
+                            <label for="doc-select-1" style="display: block;">历史粮食</label>
+                            <select multiple class="petHistoryFood"  data-am-selected >
+                                <option value="0">正常</option>
+                                <option value="1">活跃</option>
+                            </select>
+                        </div>
+                        <div class="am-form-group" id="demand" style="margin-bottom:20px">
+                            <label for="doc-select-1" style="display: block;">宠物需求点</label>
+                            <select  class="demand"  data-am-selected >
+                                <option value="0">正常</option>
+                                <option value="1">活跃</option>
+                            </select>
+                        </div>
+                        <p>
+                            <button type="button" class="am-btn am-btn-default" id="sub">提交</button>
+                        </p>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+          <div class="am-modal-dialog">
+            <div class="am-modal-hd">正在载入...</div>
+            <div class="am-modal-bd">
+              <span class="am-icon-spinner am-icon-spin"></span>
+            </div>
+          </div>
+        </div>
+        <script src="assets/js/amazeui.min.js"></script>
+         <script src="assets/js/app.js"></script>
+        <script src="js/demo.js"></script>
+        <script type="text/javascript">
+            // 截取userid和token
+            var url=window.location.href;
+            var user_token=url.split("?")[1].split("&")[1].split("=")[1];
+            var user_userid=url.split("?")[1].split("&")[0].split("=")[1];
+            // 上传图片
+            $('#doc-form-file').on('change', function() {
+                console.log($(this))
+                var fileNames = '';
+                $.each(this.files, function() {
+                    console.log(this)
+                    fileNames += '<span class="am-badge">' + this.name + '</span> ';
+                });
+                $('#file-list').html(fileNames);
+            });
+            // 在缓存中读取userid和token
+            var token=sessionStorage.getItem("token");
+            var userid=sessionStorage.getItem("admin_userid");
+            //获取宠物种类列表
+            $.ajax({
+                url:"https://myyouta.com/mzXL/User/getPetType",
+                async:false,
+                data:{
+                    token:token,
+                    userid:userid
+                },
+                success:function(res) {
+                    $('#my-modal-loading').modal("close");
+                    console.log(res);
+                    if(res.code==100000){
+                        // a-z设置下拉选项
+                        for(var i=0;i<res.data.A.length;i++){
+                            $("#cw").append('<option>'+res.data.A[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.B.length;i++){
+                            $("#cw").append('<option>'+res.data.B[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.C.length;i++){
+                            $("#cw").append('<option>'+res.data.C[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.D.length;i++){
+                            $("#cw").append('<option>'+res.data.D[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.E.length;i++){
+                            $("#cw").append('<option>'+res.data.E[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.F.length;i++){
+                            $("#cw").append('<option>'+res.data.F[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.G.length;i++){
+                            $("#cw").append('<option>'+res.data.G[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.H.length;i++){
+                            $("#cw").append('<option>'+res.data.H[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.I.length;i++){
+                            $("#cw").append('<option>'+res.data.I[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.J.length;i++){
+                            $("#cw").append('<option>'+res.data.J[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.K.length;i++){
+                            $("#cw").append('<option>'+res.data.K[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.L.length;i++){
+                            $("#cw").append('<option>'+res.data.L[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.M.length;i++){
+                            $("#cw").append('<option>'+res.data.M[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.N.length;i++){
+                            $("#cw").append('<option>'+res.data.N[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.O.length;i++){
+                            $("#cw").append('<option>'+res.data.O[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.P.length;i++){
+                            $("#cw").append('<option>'+res.data.P[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.Q.length;i++){
+                            $("#cw").append('<option>'+res.data.Q[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.R.length;i++){
+                            $("#cw").append('<option>'+res.data.R[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.S.length;i++){
+                            $("#cw").append('<option>'+res.data.S[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.T.length;i++){
+                            $("#cw").append('<option>'+res.data.T[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.U.length;i++){
+                            $("#cw").append('<option>'+res.data.U[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.V.length;i++){
+                            $("#cw").append('<option>'+res.data.V[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.W.length;i++){
+                            $("#cw").append('<option>'+res.data.W[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.X.length;i++){
+                            $("#cw").append('<option>'+res.data.X[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.Y.length;i++){
+                            $("#cw").append('<option>'+res.data.Y[i]+'</option>')
+                        }
+                        for(var i=0;i<res.data.Z.length;i++){
+                            $("#cw").append('<option>'+res.data.Z[i]+'</option>')
+                        }
+                        
+                    }else{
+                        alert(res.message)
+                    }
+                }
+            })
+            //获取宠物体重类型
+            $.ajax({
+                url:"https://myyouta.com/mzXL/manage/getWeightType",
+                 async:false,
+                data:{
+                    token:token,
+                    userid:userid
+                },
+                success:function(res) {
+                    console.log(res);
+                    if(res.code==100000){
+                        $(".petShape")[0].innerHTML="";
+                        for (var i = res.data.length - 1; i >= 0; i--) {
+                            $(".petShape").append('<option value="'+res.data[i].id+'">'+res.data[i].weightType+'</option>')
+                        }
+                    }else{
+                        alert(res.message)
+                    }
+                }
+            })
+            // 获取宠物活跃度类型
+            $.ajax({
+                url:"https://myyouta.com/mzXL/manage/getActivityPet",
+                 async:false,
+                data:{
+                    token:token,
+                    userid:userid
+                },
+                success:function(res) {
+                    console.log(res);
+                    if(res.code==100000){
+                        $(".petActivity")[0].innerHTML="";
+                        for (var i = res.data.length - 1; i >= 0; i--) {
+                            $(".petActivity").append('<option value="'+res.data[i].id+'">'+res.data[i].activity+'</option>')
+                        }
+                    }else{
+                        alert(res.message)
+                    }
+                }
+            })
+            // 获取历史粮食
+            $.ajax({
+                url:"https://myyouta.com/mzXL/manage/getHistoryFood",
+                 async:false,
+                data:{
+                    token:token,
+                    userid:userid
+                },
+                success:function(res) {
+                    console.log(res);
+                    if(res.code==100000){
+                        $(".petHistoryFood")[0].innerHTML="";
+                        for (var i = res.data.length - 1; i >= 0; i--) {
+                            $(".petHistoryFood").append('<option value="'+res.data[i].id+'">'+res.data[i].historyFood+'</option>')
+                        }
+                    }else{
+                        alert(res.message)
+                    }
+                }
+            })
+            // 获取过敏源
+             $.ajax({
+                url:"https://myyouta.com/mzXL/manage/getAllergy",
+                 async:false,
+                data:{
+                    token:token,
+                    userid:userid
+                },
+                success:function(res) {
+                    console.log(res);
+                    if(res.code==100000){
+                        $(".petAllergy")[0].innerHTML="";
+                        for (var i = res.data.length - 1; i >= 0; i--) {
+                            $(".petAllergy").append('<option value="'+res.data[i].id+'">'+res.data[i].allergy+'</option>')
+                        }
+                    }else{
+                        alert(res.message)
+                    }
+                }
+            })
+             // 获取宠物需求点
+             $.ajax({
+                url:"https://myyouta.com/mzXL/manage/getPetDemand",
+                 async:false,
+                data:{
+                    token:token,
+                    userid:userid
+                },
+                success:function(res) {
+                    console.log(res);
+                    if(res.code==100000){
+                        $(".demand")[0].innerHTML="";
+                        for (var i = res.data.length - 1; i >= 0; i--) {
+                            $(".demand").append('<option value="'+res.data[i].id+'">'+res.data[i].demand+'</option>')
+                        }
+                    }else{
+                        alert(res.message)
+                    }
+                }
+            })
+            //提交宠物信息
+            $("#sub").click(function(){
+                //宠物昵称
+                var petName=$(".petName")[0].value;
+                // 宠物生日
+                var petBirthday=$(".petBirthday")[0].value;
+                // 宠物类型
+                var petType=$(".petType span.am-fl")[0].innerText;
+                // 宠物性别
+                var petSex=$("#petSex span.am-fl")[0].innerText;
+                // 宠物体重
+                var petWeight=$(".petWeight")[0].value;
+                // 是否绝育
+                var petIsspay=$("#petIsspay span.am-fl")[0].innerText;
+                // 宠物体型
+                var petShape=$("#petShape span.am-fl")[0].innerText;
+                // 过敏原
+                var petAllergy=$("#petAllergy span.am-fl")[0].innerText;
+                // 历史干粮
+                var petHistoryFood=$("#petHistoryFood span.am-fl")[0].innerText;
+                // 活跃度
+                var petActivity=$("#petActivity span.am-fl")[0].innerText;
+                console.log(petHistoryFood)
+                // 宠物需求点
+                var demand=$("#demand span.am-fl")[0].innerText;
+                // 提交
+                $.ajax({
+                    url:"https://myyouta.com/mzXL/User/addPetInfo",
+                     async:false,
+                    data:{
+                        token:user_token,
+                        userid:user_userid,
+                        stepFlag:1,
+                        petName:petName,
+                        petShape:petShape,
+                        petAllergy:petAllergy,
+                        petIsspay:petIsspay,
+                        petWeight:petWeight,
+                        petSex:petSex,
+                        petBirthday:petBirthday,
+                        petType:petType,
+                        demand:demand,
+                        petActivity:petActivity,
+                        petHistoryFood:petHistoryFood
+                    },
+                    success:function(res) {
+                        console.log(res);
+                        if(res.code==100000){
+                            alert("添加成功")
+                        }else{
+                            alert(res.message)
+                        }
+                    }
+                })
+            })
+        </script>
+        <!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+        <!--[if (gte IE 9)|!(IE)]><!-->
+        <script src="assets/js/amazeui.min.js"></script>
+        <!--<![endif]-->
+       
+
+
+
+    </body>
+
+</html>

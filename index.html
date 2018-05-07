@@ -1,0 +1,151 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>宠物鲜粮</title>
+<meta name="description" content="这是一个 index 页面">
+<meta name="keywords" content="index">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!-- <meta  http-equiv="refresh" content="0,URL='login.html'"> -->
+<link rel="icon" type="image/png" href="assets/i/favicon.png">
+<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="assets/css/admin.css">
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+</head>
+<body>
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand"><img src="assets/i/logo.png"></div>
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+        <li class="am-dropdown tognzhi" data-am-dropdown> 
+      <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle id="fh">待发货订单<span class="am-badge am-badge-danger am-round" id="num">6</span></button>        
+      </li>      
+      <li class="kuanjie">
+        <a href="login.html" style="color:#e4393c" onclick="sessionStorage.clear();alert('退出成功，将跳转到登录页')">退出登录</a>  
+      </li>
+    </ul>
+  </div>
+</header>
+<div class="am-cf admin-main"> 
+  <div class="nav-navicon admin-main admin-sidebar">
+    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;">
+      <span id="jusername" style="padding-left: 15px;"></span>
+    </div>
+    <div class="sideMenu" id="sideMenu">
+      
+    </div>
+  </div>
+  </div>
+    <iframe id="ifream" src="" width="88%" height="930px" frameborder="0" scrolling="no" style="margin-left: 215px;margin-top: 50px" name="iframe"></iframe>
+    <script type="text/javascript">
+      //读取存储好的侧边栏菜单
+      str = sessionStorage.obj;
+      //重新转换为对象
+      obj = JSON.parse(str);
+      // 循环生成侧边栏菜单
+      for(var i=1;i<obj.length;i++){
+        if(obj[i].powerDesc=="系统管理"){
+          $("#sideMenu").append('<h3 class="am-icon-cart-plus"><em></em> <a href="#"> 系统管理</a></h3><ul><li><a href="system_management.html" target="iframe">系统管理</a></li></ul>')
+        }
+        if(obj[i].powerDesc=="商品管理"){
+           $("#sideMenu").append('<h3 class="am-icon-flag"><em></em> <a href="#"> 商品管理</a></h3><ul><li><a href="shop_management.html" target="iframe">商品管理</a></li></ul>')
+        }
+        if(obj[i].powerDesc=="订单管理"){
+           $("#sideMenu").append('<h3 class="am-icon-gears"><em></em> <a href="#"> 订单管理</a></h3><ul><li><a href="order.html" target="iframe">订单管理</a></li><li><a href="place_order.html" target="iframe">下单</a></li><li><a href="logistics.html" target="iframe">物流查询</a></li><li><a href="order.html" target="iframe">设置周期</a></li></ul>')
+        }
+        if(obj[i].powerDesc=="客户管理"){
+           $("#sideMenu").append('<h3 class="am-icon-gears"><em></em> <a href="#"> 客户信息</a></h3><ul><li><a href="user_files.html" target="iframe">用户档案</a></li><li><a href="consumption_level.html" target="iframe">消费级别</a></li><li><a href="./collection.html" target="iframe">采集绑定</a></li></ul>')
+        }
+        if(obj[i].powerDesc=="数据统计"){
+           $("#sideMenu").append('<h3 class="am-icon-gears"><em></em> <a href="#"> 数据统计</a></h3><ul><li><a href="order_report.html" target="iframe">订单报表</a></li><li><a href="baobiao.html" target="iframe">财务报表</a></li></ul>')
+        }
+        if(obj[i].powerDesc=="营销管理"){
+           $("#sideMenu").append('<h3 class="am-icon-gears"><em></em> <a href="#"> 营销管理</a></h3><ul><li><a href="yhq.html" target="iframe">优惠券设置</a></li><li><a href="set_zk.html" target="iframe">折扣设置</a></li></ul>')
+        }
+        if(obj[i].powerDesc=="内容管理"){
+           $("#sideMenu").append('<h3 class="am-icon-flag"><em></em> <a href="#"> 内容管理</a></h3><ul><li><a href="information.html" target="iframe">内容管理</a></li></ul>')
+        }
+        if(obj[i].powerDesc=="宠物管理"){
+           $("#sideMenu").append('<h3 class="am-icon-flag"><em></em> <a href="#"> 宠物管理</a></h3><ul><li><a href="pet.html" target="iframe">宠物管理</a></li></ul>')
+        }
+        if(obj[i].powerDesc=="鲜粮产品设置"){
+           $("#sideMenu").append('<h3 class="am-icon-flag"><em></em> <a href="#"> 鲜粮产品设置</a></h3><ul><li><a href="set_xl.html" target="iframe">鲜粮产品设置</a></li></ul>')
+        }
+        if(obj[i].powerDesc=="客服"){
+           $("#sideMenu").append('<h3 class="am-icon-flag"><em></em> <a href="#"> 客服</a></h3><ul><li><a href="shop_management.html" target="iframe">客服</a></li></ul>')
+        }
+      }
+    </script>
+     <script type="text/javascript">
+			jQuery(".sideMenu").slide({
+				titCell:"h3", //鼠标触发对象
+				targetCell:"ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏     
+				effect:"slideDown", //targetCell下拉效果
+				delayTime:200 , //效果时间
+				triggerTime:150, //鼠标延迟触发时间（默认150）
+				defaultPlay:true,//默认是否执行效果（默认true）
+				returnDefault:false //鼠标从.sideMen移走后返回默认状态（默认false）
+				});
+		</script> 
+    <script type="text/javascript">
+        $(function(){
+          var jclassname=sessionStorage.getItem("admin_name");
+          console.log(jclassname);
+          $("#jusername")[0].innerText="欢迎 "+jclassname;
+         console.log($("#ifream")[0].src)
+         $("#ifream")[0].src="shop_management.html";
+         $("#fh").click(function(){
+           $("#ifream")[0].src="dfh.html"
+         })
+        });
+    </script>
+    <script type="text/javascript">
+        // setInterval( function(){
+        //   var token=sessionStorage.getItem("token");
+        //   var jdeptid=sessionStorage.getItem("jdeptid");
+        //   $.ajax({
+        //     async:false,
+        //     type:"get",
+        //     url:"http://www.jinggexiansheng.com:8080/Whimsy/backshop/allOrder",
+        //     data:{
+        //       token:token,
+        //       jdeptid:jdeptid,
+        //       jstate:3,
+        //       jbegintime:"",
+        //       jendtime:"",
+
+        //     },
+        //   dataType:'jsonp',  
+        //   jsonp:'callback',  
+        //   success:function(rs) {
+        //     console.log(rs);
+        //     $("#number")[0].innerText=rs.data.list.length;
+        //   }
+        // });        
+        // },1000);
+    </script>
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>	
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]--> 
+
+<!--[if (gte IE 9)|!(IE)]><!--> 
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+
+
+
+</body>
+</html>

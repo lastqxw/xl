@@ -1,0 +1,237 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Amaze UI Admin index Examples</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <style type="text/css">
+    body,
+    #main {
+      width: 98%;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      background-color: #fff;
+    }
+
+    .tx {
+      width: 16.05%;
+      height: 200px;
+      display: inline-table;
+      background-color: #fff;
+      text-align: center;
+      line-height: 200px;
+    }
+
+    .touxiang {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .l1 {
+      background-color: #fff;
+      display: inline-table;
+      height: 100px;
+      float: right;
+      width: 83.95%
+    }
+
+    .container {
+      width: 98%;
+      margin: 15px auto 0 auto;
+      padding-bottom: 10px;
+      height: 200px;
+      overflow: hidden;
+      clear: both;
+      border-bottom: solid 1px #eff2f7;
+      background-color: #fff;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    .l1 p {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+    }
+
+    .am-u-md-4 p:last-child,
+    .am-u-md-2 p:last-child {
+      font-size: 20px;
+      color: #000;
+      font-weight: bold;
+
+    }
+  </style>
+</head>
+
+<body>
+  <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+  </head>
+
+  <body>
+    <div class="admin-biaogelist">
+      <div class="listbiaoti am-cf">
+        <ul class="am-icon-flag on"> 客户信息</ul>
+        <dl class="am-icon-home" style="float: right;">
+          当前位置： 首页 >
+          <a href="order.html" target="iframe">订单管理</a> > 客户信息
+        </dl>
+      </div>
+      <div class="container">
+        <div class="tx">
+          <img src="assets/img/user05.png" alt="" class="touxiang">
+        </div>
+        <div class="l1">
+          <div class="am-u-md-4">
+            <p>姓名</p>
+            <p class="name">四儿</p>
+          </div>
+          <div class="am-u-md-4">
+            <p>性别</p>
+            <p class="sex">男</p>
+          </div>
+          <div class="am-u-md-4">
+            <p>手机号</p>
+            <p class="phone">17615833291</p>
+          </div>
+        </div>
+        <div class="l1" style="margin-top:-100px">
+          <div class="am-u-md-4">
+            <p>年龄</p>
+            <p class="age">25岁</p>
+          </div>
+          <div class="am-u-md-4">
+            <p>积分</p>
+            <p class="integral">1111</p>
+          </div>
+          <div class="am-u-md-4">
+            <p>地址</p>
+            <p class="balance">山东省济南市历下区舜泰广场9号南楼1102室</p>
+          </div>
+        </div>
+      </div>
+      <div class="listbiaoti am-cf">
+        <ul class="am-icon-flag on"> 宠物信息</ul>
+      </div>
+      <div class="am-tabs" data-am-tabs>
+        <ul class="am-tabs-nav am-nav am-nav-tabs" id="tabs"></ul>
+
+        <div class="am-tabs-bd" id="tabss"> </div>
+      </div>
+    </div>
+    </div>
+
+    <!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <!--<![endif]-->
+    <script>
+      // 获取保存的管理员的token和admin_userid
+      var token = sessionStorage.getItem("token");
+      var userid = sessionStorage.getItem("admin_userid")
+      // 截取url上的userId
+      var commonUserId = window.location.href.split("?")[1].split("=")[1];
+      // 通过userid获取用户信息
+      $.ajax({
+        async:false,
+        url: "https://myyouta.com/mzXL/getUser",
+        data: {
+          token: token,
+          userid: userid,
+          commonUserId: commonUserId
+        },
+        success: function (res) {
+          console.log(res);
+          if (res.code == 100000) {
+            // 姓名
+            $(".name")[0].innerText = res.data.name;
+            // 性别
+            $(".sex")[0].innerText = res.data.sex;
+            // 年龄
+            $(".age")[0].innerText = res.data.age;
+            // 手机号
+            $(".phone")[0].innerText = res.data.phone;
+            // 积分
+            $(".integral")[0].innerText = res.data.integral;
+            // 地址
+            $(".balance")[0].innerText = res.data.address;
+            // 头像
+            $(".touxiang")[0].src = res.data.touxiang;
+            // 通过token和userid获取
+            var user_token = res.data.token;
+            var user_userid = res.data.userid;
+            $.ajax({
+              url: "https://myyouta.com/mzXL/User/getPets",
+              async:false,
+              data: {
+                token: user_token,
+                userid: user_userid,
+                pageSize: 200,
+                pageNum: 1
+              },
+              success: function (res) {
+                console.log(res)
+                if (res.code == 100000) {
+                  $("#tabs")[0].innerHTML = "";
+                  $("#tabss")[0].innerHTML = "";
+                  // 获取data的长度，生成table标签页
+                  for (var i = 0; i < res.data.length; i++) {
+                    $("#tabs").append('<li class=""><a href="#tab' + (i + 1) + '">宠物' + (i + 1) +
+                      '</a></li>');
+                    $("#tabss").append(' <div class="am-tab-panel" id="tab' + (i + 1) +
+                      '"><div class="tx"><img src="' + res.data[i].imgTouxiang +
+                      '" alt="" class="touxiang"></div><div class="l1"><div class="am-u-md-2"><p>宠物昵称</p><p class="petname">' +
+                      res.data[i].petName +
+                      '</p> </div><div class="am-u-md-2"><p>类型</p><p class="pettype">' + res.data[i].petType +
+                      '</p></div><div class="am-u-md-2"><p>生日</p><p class="petbirthday">' + res.data[i].petBirthday +
+                      '</p></div><div class="am-u-md-2"><p>性别</p><p class="petbirthday">' + res.data[i].petSex +
+                      '</p> </div><div class="am-u-md-2"><p>重量</p><p class="petweight">' + res.data[i].petWeight +
+                      'kg</p></div><div class="am-u-md-2"><p>所处狗生阶段</p><p class="stage">' + res.data[i].stage +
+                      '</p></div></div><div class="l1" style="margin-top:-100px"><div class="am-u-md-2"><p>是否绝育</p><p class="petisspay">' +
+                      res.data[i].petIsspay +
+                      '</p></div><div class="am-u-md-2"><p>活跃度</p><p class="petactivity">' + res.data[i].petActivity +
+                      '</p></div><div class="am-u-md-2"><p>过敏源</p><p class="petallergy">' + res.data[i].petAllergy +
+                      '</p></div><div class="am-u-md-2"><p>体型</p><p class="petshape">' + res.data[i].petShape +
+                      '</p></div><div class="am-u-md-2"><p>星座</p><p class="petconstellation">' + res.data[
+                        i].petConstellation +
+                      '</p></div><div class="am-u-md-2"><p>历史鲜粮</p><p class="pethistoryFood">' + res.data[
+                        i].petHistoryFood + '</p></div></div></div>')
+                  }
+                } else {
+                  $("#tabs")[0].innerHTML = "";
+                  $("#tabss")[0].innerHTML = res.message;
+                }
+              }
+            })
+          }
+        }
+      })
+      // 通过用户userid获取宠物信息
+    </script>
+
+<script src="assets/js/amazeui.min.js"></script>
+
+  </body>
+
+</html>

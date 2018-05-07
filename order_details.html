@@ -1,0 +1,199 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="js/dialog.js"></script>
+    <style>
+        .am-panel {
+            width: 98%;
+            margin: 15px auto 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+    </head>
+
+    <body>
+        <div class="admin-biaogelist">
+            <div class="listbiaoti am-cf">
+                <ul class="am-icon-flag on"> 订单详情</ul>
+                <dl class="am-icon-home" style="float: right;"> 当前位置： 首页 >
+                    <a href="shop_management.html" target="iframe">订单管理</a>
+                </dl>
+            </div>
+            <!-- 订单信息 -->
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">订单号</h3>
+                </header>
+                <div class="am-panel-bd" id="code">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">销售人员手机号</h3>
+                </header>
+                <div class="am-panel-bd" id="salesman">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">付款备注</h3>
+                </header>
+                <div class="am-panel-bd" id="payDesc">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">订单类型</h3>
+                </header>
+                <div class="am-panel-bd" id="ordertype">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">收件人</h3>
+                </header>
+                <div class="am-panel-bd" id="addressee">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">收货地址</h3>
+                </header>
+                <div class="am-panel-bd" id="address">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">联系方式</h3>
+                </header>
+                <div class="am-panel-bd" id="phone">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">套餐名</h3>
+                </header>
+                <div class="am-panel-bd" id="formulaName">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                    <header class="am-panel-hd">
+                        <h3 class="am-panel-title">套餐类型</h3>
+                    </header>
+                    <div class="am-panel-bd" id="foodTaste">
+                       暂无
+                    </div>
+                </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">口味</h3>
+                </header>
+                <div class="am-panel-bd" id="flavor">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">价格</h3>
+                </header>
+                <div class="am-panel-bd" id="price">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">总共定制周期数</h3>
+                </header>
+                <div class="am-panel-bd" id="foodCycle">
+                   暂无
+                </div>
+            </section>
+            <section class="am-panel am-panel-secondary">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">创建时间</h3>
+                </header>
+                <div class="am-panel-bd" id="creatertime">
+                   暂无
+                </div>
+            </section>
+
+        </div>
+
+        <!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+        <!--[if (gte IE 9)|!(IE)]><!-->
+        <script src="assets/js/amazeui.min.js"></script>
+        <!--<![endif]-->
+        <script>
+            var url=window.location.href;
+            var id=url.split("?")[1].split("=")[1];
+            var token=sessionStorage.getItem("token");
+            var userid=sessionStorage.getItem("admin_userid");
+            //获取订单详情
+            $.ajax({
+                url:"https://myyouta.com/mzXL/Order/getOrderInfo?token="+token+"&userid="+userid+"&id="+id,
+                success:function(res){
+                    console.log(res)
+                    if(res.code==100000){
+                        $("#creatertime")[0].innerText=res.data.OrderFreshfood.creatertime;
+                        $("#foodCycle")[0].innerText=res.data.OrderFreshfood.foodCycle;
+                        $("#code")[0].innerText=res.data.OrderFreshfood.orderid;
+                        $("#foodTaste")[0].innerText=res.data.OrderFreshfood.foodTaste
+                        $("#price")[0].innerText=res.data.OrderFreshfood.price;
+                        $("#addressee")[0].innerText=res.data.address.addressee;
+                        $("#address")[0].innerText=res.data.address.address+res.data.address.addressinfo;
+                        $("#phone")[0].innerText=res.data.address.phone;
+                        $("#flavor")[0].innerText=res.data.OrderFreshfood.flavor;
+                        $("#payDesc")[0].innerText=res.data.OrderFreshfood.payDesc;
+                        $("#salesman")[0].innerText=res.data.OrderFreshfood.salesman;
+                        $("#formulaName")[0].innerText=res.data.OrderFreshfood.formulaName;
+                        var ordertype=res.data.OrderFreshfood.ordertype;
+                        if(ordertype==1){
+                            ordertype="主食"
+                        }else{
+                            ordertype="半食"
+                        }
+                        $("#ordertype")[0].innerText=ordertype
+                    }
+                }
+            })
+        </script>        
+
+
+    </body>
+
+</html>

@@ -1,0 +1,372 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Amaze UI Admin index Examples</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <link rel="stylesheet" href="css/animate.css">
+  <style type="text/css">
+    #shop_name {
+      display: inline-table;
+      width: 10%;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 5px;
+      margin-right: 30px;
+      border: 1px solid #ddd;
+      padding-left: 5px;
+    }
+
+    .ss {
+      width: 100%;
+      line-height: 80px;
+    }
+  </style>
+  <script src="js/dialog.js"></script>
+</head>
+
+<body>
+  <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+  </head>
+
+  <body>
+    <div class="admin-biaogelist">
+      <div class="listbiaoti am-cf">
+        <ul class="am-icon-flag on"> 文章管理</ul>
+        <dl class="am-icon-home" style="float: right;"> 当前位置： 首页 >
+          <a href="#" target="iframe">文章管理</a>
+        </dl>
+        <!--  -->
+        <dl>
+          <button type="button" class="am-btn am-btn-danger am-round am-btn-xs am-icon-plus" id="add_article"> 添加文章</button>
+        </dl>
+      </div>
+      <div class="listbiaoti am-cf" style="margin-top: 0px;padding:15px;height:auto;">
+        <div class="ss">
+          <span>关键字:</span>
+          <input type="text" placeholder="请输入关键字" id="shop_name">
+        </div>
+        <div class="ss name">
+          <span>选择宠物类型:</span>
+          <select data-am-selected="{searchBox: 1,maxHeight: 100}" placeholder="选择宠物" id="cw">
+            <option selected  value=""></option>
+          </select>
+        </div>
+        <div class="ss">
+          <span style="float:left">选择起止时间：</span>
+          <div class="am-g" style="width:40%;display:inline-table;padding:0px">
+            <div class="am-u-sm-6">
+              <button type="button" class="am-btn am-btn-default am-margin-right" id="my-start">开始日期</button>
+              <span id="my-startDate"></span>
+            </div>
+            <div class="am-u-sm-6">
+              <button type="button" class="am-btn am-btn-default am-margin-right" id="my-end">结束日期</button>
+              <span id="my-endDate"></span>
+            </div>
+          </div>
+          <div class="am-alert am-alert-danger" id="my-alert" style="display: none">
+            <p>开始日期应小于结束日期！</p>
+          </div>
+        </div> 
+        <div class="ss">
+          <button class="am-btn am-btn-primary " id="search">
+            <i class="am-icon-search"></i>
+            搜索
+          </button>
+        </div>
+
+      </div>
+      <form class="am-form am-g" id="quan">
+        <table width="100%" class="am-table am-table-bordered am-table-centered">
+          <thead>
+            <tr>
+              <th class="table-id">编号</th>
+              <th class="table-type">标题</th>
+              <th class="table-type">文章类型</th>
+              <th class="table-type">适合品种</th>
+              <th class="table-type">发布时间</th>
+              <th class="table-type">点击量</th>
+              <th class="table-type">分享数</th>
+              <th class="table-type">操作</th>
+            </tr>
+          </thead>
+          <tbody id="table">
+
+          </tbody>
+        </table>
+        <ul class="am-pagination am-pagination-right" id="pagination">
+
+          </ul>
+      </form>
+    </div>
+    <script type="text/javascript">
+      var token = sessionStorage.getItem("token");
+      var userid = sessionStorage.getItem("admin_userid");
+      $("#add_article").click(function () {
+        window.location.href = "add_article.html";
+      })
+      // 日期选择
+      $(function () {
+        var startDate = new Date(2014, 11, 20);
+        var endDate = new Date(2014, 11, 25);
+        var $alert = $('#my-alert');
+        $('#my-start').datepicker().
+        on('changeDate.datepicker.amui', function (event) {
+          if (event.date.valueOf() > endDate.valueOf()) {
+            $alert.find('p').text('开始日期应小于结束日期！').end().show();
+          } else {
+            $alert.hide();
+            startDate = new Date(event.date);
+            $('#my-startDate').text($('#my-start').data('date'));
+          }
+          $(this).datepicker('close');
+        });
+
+        $('#my-end').datepicker().
+        on('changeDate.datepicker.amui', function (event) {
+          if (event.date.valueOf() < startDate.valueOf()) {
+            $alert.find('p').text('结束日期应大于开始日期！').end().show();
+          } else {
+            $alert.hide();
+            endDate = new Date(event.date);
+            $('#my-endDate').text($('#my-end').data('date'));
+          }
+          $(this).datepicker('close');
+        });
+      });
+      //获取宠物种类列表
+      $.ajax({
+        url: "https://myyouta.com/mzXL/User/getPetType",
+        async: false,
+        data: {
+          token: token,
+          userid: userid
+        },
+        success: function (res) {
+          console.log(res);
+          if (res.code == 100000) {
+            // a-z设置下拉选项
+            for (var i = 0; i < res.data.A.length; i++) {
+              $("#cw").append('<option>' + res.data.A[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.B.length; i++) {
+              $("#cw").append('<option>' + res.data.B[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.C.length; i++) {
+              $("#cw").append('<option>' + res.data.C[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.D.length; i++) {
+              $("#cw").append('<option>' + res.data.D[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.E.length; i++) {
+              $("#cw").append('<option>' + res.data.E[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.F.length; i++) {
+              $("#cw").append('<option>' + res.data.F[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.G.length; i++) {
+              $("#cw").append('<option>' + res.data.G[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.H.length; i++) {
+              $("#cw").append('<option>' + res.data.H[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.I.length; i++) {
+              $("#cw").append('<option>' + res.data.I[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.J.length; i++) {
+              $("#cw").append('<option>' + res.data.J[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.K.length; i++) {
+              $("#cw").append('<option>' + res.data.K[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.L.length; i++) {
+              $("#cw").append('<option>' + res.data.L[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.M.length; i++) {
+              $("#cw").append('<option>' + res.data.M[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.N.length; i++) {
+              $("#cw").append('<option>' + res.data.N[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.O.length; i++) {
+              $("#cw").append('<option>' + res.data.O[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.P.length; i++) {
+              $("#cw").append('<option>' + res.data.P[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.Q.length; i++) {
+              $("#cw").append('<option>' + res.data.Q[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.R.length; i++) {
+              $("#cw").append('<option>' + res.data.R[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.S.length; i++) {
+              $("#cw").append('<option>' + res.data.S[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.T.length; i++) {
+              $("#cw").append('<option>' + res.data.T[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.U.length; i++) {
+              $("#cw").append('<option>' + res.data.U[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.V.length; i++) {
+              $("#cw").append('<option>' + res.data.V[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.W.length; i++) {
+              $("#cw").append('<option>' + res.data.W[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.X.length; i++) {
+              $("#cw").append('<option>' + res.data.X[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.Y.length; i++) {
+              $("#cw").append('<option>' + res.data.Y[i] + '</option>')
+            }
+            for (var i = 0; i < res.data.Z.length; i++) {
+              $("#cw").append('<option>' + res.data.Z[i] + '</option>')
+            }
+
+          } else {
+            alert(res.message)
+          }
+        }
+      })
+      // 获取文章
+      function getArticle(pageNum,petType,startTime,endTime,title) {
+        $.ajax({
+          url: "https://myyouta.com/mzXL/manage/getArticleList",
+          data: {
+            token: token,
+            userid: userid,
+            pageNum:pageNum,
+            pageSize:10,
+            startTime:startTime,
+            endTime:endTime ,
+            title:title, 
+            petType:petType
+          },
+          async: false,
+          success: function (res) {
+            console.log(res);
+            if (res.code == 100000) {
+              $("#pagination")[0].innerHTML = "";
+              var count = res.count;
+              if (count % 10 == 0) {
+                for (var i = 0; i < count / 10; i++) {
+                  $("#pagination").append(' <li><a href="#" class="li">' + (i + 1) + '</a></li>')
+                }
+              } else {
+                for (var i = 0; i < count / 10; i++) {
+                  $("#pagination").append(' <li class="li"><a href="#" class="li">' + (i + 1) + '</a></li>')
+                }
+              }
+              // 分页切换
+              $("#pagination .li").click(function(){
+                 var pageNum=$(this)[0].innerText;
+                 getArticle(pageNum,"","","","");
+                 console.log($(this));
+               })
+              var type = "";
+              $("#table")[0].innerHTML = "";
+              for (var i = 0; i < res.data.length; i++) {
+                if (res.data[i].videoSrc == "") {
+                  type = "图文类型"
+                } else {
+                  type = "视频类型"
+                }
+                $("#table").append('<tr><td class="am-text-middle">' + res.data[i].id +
+                  '</td><td class="am-text-middle">' + res.data[i].title + '</td><td class="am-text-middle">' +
+                  type + '</td><td class="am-text-middle">' + res.data[i].petType +
+                  '</td><td class="am-text-middle">' + res.data[i].creatertime +
+                  '</td><td class="am-text-middle">' + res.data[i].clicks +
+                  '</td><td class="am-text-middle">' + res.data[i].shareNum +
+                  '</td><td style="width:25%"><button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary am-round" title=""><a class="am-icon-pencil-square-o" class="u2" href="./bj_article.html?id=' +
+                  res.data[i].id +
+                  '" target="iframe">查看并编辑文章</a></button><button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger am-round" data-id="' +
+                  res.data[i].id + '" target="" class="del" onclick="del(this)">删除文章</button></td></tr>')
+
+              }
+            }else{
+              alert(res.message)
+            }
+          }
+        })
+      }
+      window.onload = function () {
+        getArticle(1,"","","","");
+      }
+      //搜索文章
+      $("#search").click(function(){
+        var petType=$(".name span.am-fl")[0].innerText;
+        if(petType==", 点击选择..."){
+          petType="";
+        }
+        var startTime=$("#my-startDate")[0].innerText;
+        var endTime=$("#my-endDate")[0].innerText;
+        var title=$("#shop_name")[0].value;
+        getArticle(1,petType,startTime,endTime,title);
+      })
+      // 删除文章
+      function del(e) {
+        var id = $(e)[0].dataset.id;
+        $('#del-confirm').modal({
+          relatedTarget: this,
+          onConfirm: function (options) {
+            $.ajax({
+              type: "get",
+              url: "https://myyouta.com/mzXL/manage/delArticle",
+              data: {
+                token: token,
+                userid: userid,
+                id: id,
+              },
+              success: function (rs) {
+                console.log(rs.data);
+                if (rs.code == 100000) {
+                  alert("删除成功");
+                  location.replace(location);
+                } else {
+                  alert(rs.message);
+                }
+              },
+              error: function () {
+                alert("请求失败，请稍后重试");
+              }
+            })
+          },
+          // closeOnConfirm: false,
+          onCancel: function () {
+            console.log("111111111")
+          }
+        });
+      }
+    </script>
+    <!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="assets/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+
+
+
+  </body>
+
+</html>

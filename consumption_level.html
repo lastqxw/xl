@@ -1,0 +1,170 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Amaze UI Admin index Examples</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <link rel="stylesheet" href="css/animate.css">
+  <style type="text/css">
+    #shop_name {
+      display: inline-table;
+      width: 10%;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 5px;
+      margin-right: 30px;
+      border: 1px solid #ddd;
+      padding-left: 5px;
+    }
+
+    .am-cf input {
+      width: 10%;
+      height: 30px;
+      line-height: 30px;
+      display: inline-block;
+      border-radius: 5px;
+      margin-right: 30px;
+      border: 1px solid #ddd;
+      padding-left: 5px;
+    }
+  </style>
+  <script src="js/dialog.js"></script>
+</head>
+
+<body>
+  <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+  </head>
+
+  <body>
+    <div class="admin-biaogelist">
+      <div class="listbiaoti am-cf">
+        <ul class="am-icon-flag on"> 客户管理</ul>
+        <dl class="am-icon-home" style="float: right;"> 当前位置： 首页 >
+          <a href="#" target="iframe">消费级别</a>
+        </dl>
+        <!--  -->
+
+      </div>
+      <div class="listbiaoti am-cf" style="margin-top: 0px;padding:15px;height:auto;">
+        <span>注册时长:</span>
+        <input type="text" placeholder="注册时长">
+        <span>活跃度:</span>
+        <input type="text" placeholder="活跃度">
+        <span>宠物个数:</span>
+        <input type="text" placeholder="宠物个数">
+        <span>消费总金额:</span>
+        <input type="text" placeholder="消费总金额">
+        <button class="am-btn am-btn-primary am-btn-xs am-text-info" style="height:29px">
+          <i class="am-icon-search"></i>
+          搜索
+        </button>
+      </div>
+      <form class="am-form am-g" id="quan">
+        <table width="100%" class="am-table am-table-bordered am-table-centered">
+          <thead>
+            <tr>
+              <th class="table-id">客户账号</th>
+              <th class="table-type">客户昵称</th>
+              <th class="table-title">注册时长</th>
+              <th class="table-type">活跃度</th>
+              <th class="table-type">宠物个数</th>
+              <th class="table-type">消费总金额</th>
+            </tr>
+          </thead>
+          <tbody id="table">
+            <tr>
+              <td class="am-text-middle">17615833291</td>
+              <td class="am-text-middle">last浅笑</td>
+              <td class="am-text-middle">15天</td>
+              <td class="am-text-middle">23</td>
+              <td class="am-text-middle">2</td>
+              <td class="am-text-middle">￥100000</td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+    <!-- 退款-->
+    <div class="am-modal am-modal-confirm" tabindex="-1" id="del-confirm">
+      <div class="am-modal-dialog">
+        <div class="am-modal-hd">退款操作</div>
+        <div class="am-modal-bd">
+          请输入退款金额：
+          <input type="text" class="am-modal-prompt-input">
+        </div>
+        <div class="am-modal-footer">
+          <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+          <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $("#add_shop").click(function () {
+        window.location.href = "add_shop.html";
+      })
+      // 删除商品
+      function del(e) {
+        var token = sessionStorage.getItem("token");
+        var jid = $(e)[0].dataset.jid;
+        $('#del-confirm').modal({
+          relatedTarget: this,
+          onConfirm: function (options) {
+            $.ajax({
+              type: "get",
+              url: "http://www.jinggexiansheng.com:8080/Whimsy/backshop/delDept?token=" + token,
+              dataType: 'jsonp',
+              data: {
+                jid: jid,
+              },
+              jsonp: 'callback',
+              success: function (rs) {
+                console.log(rs.data);
+                if (rs.code == 100000) {
+                  alert("删除成功");
+                  location.replace(location);
+                } else {
+                  alert(rs.message);
+                }
+              },
+              error: function () {
+                alert("请求失败，请稍后重试");
+              }
+            })
+          },
+          // closeOnConfirm: false,
+          onCancel: function () {
+
+          }
+        });
+      }
+    </script>
+    <!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script> 
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="assets/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+
+
+
+  </body>
+
+</html>
